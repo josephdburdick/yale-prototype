@@ -1,0 +1,126 @@
+$icon-font-path: "../bower_components/bootstrap-sass-official/vendor/assets/fonts/bootstrap/";
+
+/* === Imports === */
+// bower:scss
+@import "../bower_components/bootstrap-sass-official/vendor/assets/stylesheets/bootstrap.scss";
+// endbower
+@import "//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css";
+
+/* === Grid === */
+@import 'breakpoints';
+@import 'grid';
+
+/* === Helpers === */
+.upcase { text-transform: uppercase; }
+.inline-block { display:inline-block; }
+
+/* === Variables === */
+$defaultSpeed: .5s;
+$defaultEase: ease-in-out;
+
+/* === Header === */
+header.masthead{
+    background: #ddd;
+    padding: 5px 0;
+    nav{
+        ul{
+            list-style: none;
+            padding: 0;
+            display: flex;
+
+            li{
+                border: 1px solid $gray;
+                text-align: center;
+                border-left: 0px;
+                display: flex;
+
+                &:first-child{
+                    border-left:1px solid $gray;
+                }
+                a{
+                    display: block;
+                    padding: 5px 0;
+                    width: 100%;
+                    align-self: center;
+                    text-align: center;
+
+                    &:hover{
+                        background: white;
+                    }
+                }
+            }
+        } 
+    }
+
+    .page-title{
+        clear: both;        
+    }
+}
+/* === Dropdown === */
+
+.dd { 
+    position: absolute;
+    left: 0; right: 0;
+    background: rgba(#eee,.95);
+    @include opacity(0);
+    height: 0;
+    z-index: 10;
+    display: none;
+    @include transition(all);
+    &[data-active="true"]{
+        display: block;
+        height: auto;
+        @include opacity(1);
+    }
+    li{
+        ul{
+            // &.active{
+            //     @include opacity(1); 
+            // }
+            // &.inactive{
+            //     @include opacity(.5);
+            // }
+            // &.color{
+            //     background: red;
+            // }
+        }
+    }
+}
+
+.inline-search{
+    display: inline-block;
+    position: relative;
+    vertical-align: middle;
+    input[type="text"]{
+        padding: 6px 12px;
+        border-radius: $border-radius-base;
+    }
+    .btn-search{
+        position: absolute;
+        right: 0px;
+        top: 0px;
+        padding: 6px 12px;
+
+        border-radius: 0 $border-radius-base $border-radius-base 0;
+    }
+}
+
+/* === Content === */
+.container-fluid,.container{
+    max-width: $container-large-desktop;
+}
+.main-body{
+    margin: 20px 0;
+}
+aside{
+    .nav{
+        border: 1px solid $gray;
+    }
+}
+
+article{
+    .content{
+        border: 1px solid $gray;
+    }
+}
+
