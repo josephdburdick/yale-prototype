@@ -11,31 +11,53 @@ $icon-font-path: "../bower_components/bootstrap-sass-official/vendor/assets/font
 @import 'grid';
 
 /* === Helpers === */
-.upcase { text-transform: uppercase; }
+*             { transition: all .15s ease-in-out; }
+.upcase       { text-transform: uppercase; }
 .inline-block { display:inline-block; }
+.fa           { display: inline-block; font-family: FontAwesome; font-style: normal; font-weight: normal;line-height: 1;-webkit-font-smoothing: antialiased;-moz-osx-font-smoothing: grayscale; }
 
 /* === Variables === */
 $defaultSpeed: .5s;
 $defaultEase: ease-in-out;
+a, a:hover{
+    color: #000;
+    text-decoration: none;
+    .content &{
+        text-decoration: underline;
+    }
+}
+.nav-active-item{
+    a{
+    
+        color: white; 
+        text-decoration: none;
+        background: $gray;
+    }
+}
 
 /* === Header === */
 header.masthead{
     background: #ddd;
     padding: 5px 0;
     nav{
-        ul{
+        & > ul{
             list-style: none;
             padding: 0;
             display: flex;
 
-            li{
-                border: 1px solid $gray;
+            & > li{
+                background: #eee;
+                margin-left: 1px;
                 text-align: center;
                 border-left: 0px;
                 display: flex;
-
+                
                 &:first-child{
-                    border-left:1px solid $gray;
+                    margin-left: 0;
+                }
+                &.active a, &.active:hover a{
+                    background: $gray;
+                    color: #ccc;
                 }
                 a{
                     display: block;
@@ -43,21 +65,127 @@ header.masthead{
                     width: 100%;
                     align-self: center;
                     text-align: center;
+                    color: #000;
+                    height: 100%;
 
                     &:hover{
                         background: white;
                     }
+
                 }
             }
         } 
     }
 
-    .page-title{
-        clear: both;        
+    .page-title{ clear: both; }
+}
+.nav {
+    ul{
+        display: block;
+    }
+    li{
+        a{  
+            position: relative;
+        }
+        &.nav-item-level5{
+            @extend .nav-active-item;
+            a{
+                text-transform: uppercase;
+                
+                &:before{
+                    @extend .fa;
+                    content: '\f100\f104';
+                    position: absolute;
+                    letter-spacing: -.15rem;
+                    margin-left: -15px;
+                    margin-top: 2px;
+                }
+            }
+        }
+        &.nav-item-level4{
+            @extend .nav-active-item;
+            a{
+                text-transform: uppercase;
+                
+                &:before{
+                    @extend .fa;
+                    content: '\f100';
+                    position: absolute;
+                    margin-left: -12px;
+                    margin-top: 2px;
+                }
+            }
+        }
+        &.nav-item-level3{
+            @extend .nav-active-item; 
+            a{
+                text-transform: uppercase;
+
+                &:before{
+                    @extend .fa;
+                    content: '\f104';
+                    position: absolute;
+                    margin-left: -10px;
+                    margin-top: 2px;
+                }
+            }
+        }
+        &.nav-item-level2{
+            @extend .nav-active-item;
+            a{
+                text-transform: uppercase;
+                color: white;
+            }
+        }
+        &.nav-item-level1{
+            background: lighten($gray, 25%);
+            a{
+                text-transform: uppercase;
+                background: transparent;
+                color: white;
+            }
+        }
+        &:first-child, &:first-child > a{
+            border-radius: 5px 5px 0 0;
+        }
+        &:last-child, &:last-child > a{
+            border-radius: 0 0 5px 5px;
+        }
     }
 }
-/* === Dropdown === */
 
+/* === Dropdown == */
+.dropdown-menu{
+    .Grid-cell{
+        .nav{
+            li{
+
+                margin: 5px 0;
+                &:last-child{
+                    margin: 0;
+                }
+                a{
+                    background: #fefefe;
+                    text-align: left;
+                    text-transform: none; 
+                    padding: 0 3px;  
+                }    
+            }
+
+        }
+        
+    }
+}
+.breadcrumb{
+    li{
+        position: relative;
+        z-index: 5;
+        background: $breadcrumb-bg;        
+    }
+
+}
+
+/* === Dropdown === */
 .dd { 
     position: absolute;
     left: 0; right: 0;
@@ -65,24 +193,19 @@ header.masthead{
     @include opacity(0);
     height: 0;
     z-index: 10;
-    display: none;
-    @include transition(all);
+    // display: none;
+    opacity: 0;
+    overflow: hidden;
+    transition: all .25s linear 0s;
     &[data-active="true"]{
+        z-index: 10;
         display: block;
         height: auto;
-        @include opacity(1);
+        opacity: 1;
     }
     li{
-        ul{
-            // &.active{
-            //     @include opacity(1); 
-            // }
-            // &.inactive{
-            //     @include opacity(.5);
-            // }
-            // &.color{
-            //     background: red;
-            // }
+        &:hover, &.active{
+            background: white;
         }
     }
 }
@@ -113,14 +236,28 @@ header.masthead{
     margin: 20px 0;
 }
 aside{
+
     .nav{
-        border: 1px solid $gray;
+        a{
+            $bg: #efefef;
+            background: $bg;
+            margin-bottom:1px; 
+            padding-left: 20px;
+            padding-right: 20px;
+            color: #000;
+            &:hover{
+                // background: darken($bg, 5%);
+            }   
+        }
+        
     }
 }
 
 article{
     .content{
         border: 1px solid $gray;
+        background: #f9f9f9;
+        padding: 0 20px 10px;
     }
 }
 

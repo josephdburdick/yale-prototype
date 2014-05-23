@@ -4,10 +4,9 @@
 var gulp = require('gulp'),
     watch = require('gulp-watch'),
     plumber = require('gulp-plumber'),
-    gutil = require('gulp-util');
+    gutil = require('gulp-util'),
+    $ = require('gulp-load-plugins')();
 
-// load plugins
-var $ = require('gulp-load-plugins')();
 
 gulp.task('styles', function () {
     return gulp.src('app/styles/main.scss')
