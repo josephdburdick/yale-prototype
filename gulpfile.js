@@ -16,7 +16,8 @@ gulp.task('styles', function () {
           this.emit('end');
         }))
         .pipe($.rubySass({
-            style: 'expanded',
+            lineNumbers: true,
+            style: 'expanded', //compact, compressed
             precision: 10
         }))
         .pipe($.autoprefixer('last 1 version'))
