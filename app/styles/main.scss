@@ -5,6 +5,7 @@ $icon-font-path: "../bower_components/bootstrap-sass-official/vendor/assets/font
 @import "../bower_components/bootstrap-sass-official/vendor/assets/stylesheets/bootstrap.scss";
 // endbower
 @import "//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css";
+@import url(http://fonts.googleapis.com/css?family=PT+Sans);
 
 /* === Grid === */
 @import 'breakpoints';
@@ -15,6 +16,9 @@ $icon-font-path: "../bower_components/bootstrap-sass-official/vendor/assets/font
 .upcase       { text-transform: uppercase; }
 .inline-block { display:inline-block; }
 .fa           { display: inline-block; font-family: FontAwesome; font-style: normal; font-weight: normal;line-height: 1;-webkit-font-smoothing: antialiased;-moz-osx-font-smoothing: grayscale; }
+body          { font-weight: 400; font-family: "PT Sans";}
+
+
 
 /* === Variables === */
 $defaultSpeed: .5s;
@@ -26,12 +30,8 @@ a, a:hover{
         text-decoration: underline;
     }
 }
-.nav-active-item{
-    color: white; 
-    text-decoration: none;
-    background: $gray;
-    text-transform: uppercase;
-}
+
+
 
 /* === Header === */
 header.masthead{
@@ -77,78 +77,19 @@ header.masthead{
         } 
     }
 }
-// .nav {
-//     ul{ display: block; }
-//     li{
-//         a{  position: relative; }
-//         &.nav-item-level5{
-//             @extend .nav-active-item;
-//             a{
-//                 text-transform: uppercase;
-                
-//                 &:before{
-//                     @extend .fa;
-//                     content: '\f100\f104';
-//                     position: absolute;
-//                     letter-spacing: -.15rem;
-//                     margin-left: -15px;
-//                     margin-top: 2px;
-//                 }
-//             }
-//         }
-//         &.nav-item-level4{
-//             @extend .nav-active-item;
-//             a{
-//                 text-transform: uppercase;
-                
-//                 &:before{
-//                     @extend .fa;
-//                     content: '\f100';
-//                     position: absolute;
-//                     margin-left: -12px;
-//                     margin-top: 2px;
-//                 }
-//             }
-//         }
-//         &.nav-item-level3{
-//             @extend .nav-active-item; 
-//             a{
-//                 text-transform: uppercase;
-
-//                 &:before{
-//                     @extend .fa;
-//                     content: '\f104';
-//                     position: absolute;
-//                     margin-left: -10px;
-//                     margin-top: 2px;
-//                 }
-//             }
-//         }
-//         &.nav-item-level2{
-//             @extend .nav-active-item;
-//             a{
-//                 text-transform: uppercase;
-//                 color: white;
-//             }
-//         }
-//         &.nav-item-level1{
-//             background: lighten($gray, 25%);
-//             a{
-//                 text-transform: uppercase;
-//                 background: transparent;
-//                 color: white;
-//             }
-//         }
-//         &:first-child, &:first-child > a{
-//             border-radius: 5px 5px 0 0;
-//         }
-//         &:last-child, &:last-child > a{
-//             border-radius: 0 0 5px 5px;
-//         }
-//     }
-// }
 
 
+
+
+/* === Aside nav === */
+.nav-active-item{
+    color: white; 
+    text-decoration: none;
+    background: $gray;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    text-shadow: none;
+}
 aside .nav {
     ul{ display: block; }
     li{
@@ -156,12 +97,13 @@ aside .nav {
         & > a{ 
             position: relative; 
             text-transform: none;
-            
-            &.nav-item-level5{
+            text-shadow: 0 1px 1px white;
+            &[class^='nav-item-level'],&[class*=' nav-item-level']{
                 text-transform: uppercase;
                 @extend .nav-active-item;
-                
-                    
+
+            }
+            &.nav-item-level5{
                 &:before{
                     @extend .fa;
                     content: '\f100\f104';
@@ -170,12 +112,8 @@ aside .nav {
                     margin-left: -15px;
                     margin-top: 2px;
                 }
-            
             }
-            &.nav-item-level4{
-                text-transform: uppercase;
-                @extend .nav-active-item;
-                    
+            &.nav-item-level4{                    
                 &:before{
                     @extend .fa;
                     content: '\f100';
@@ -183,12 +121,8 @@ aside .nav {
                     margin-left: -12px;
                     margin-top: 2px;
                 }
-            
             }
             &.nav-item-level3{
-                text-transform: uppercase;
-                @extend .nav-active-item; 
-
                 &:before{
                     @extend .fa;
                     content: '\f104';
@@ -198,14 +132,15 @@ aside .nav {
                 }
             }
             &.nav-item-level2{
-                text-transform: uppercase;
-                @extend .nav-active-item;
                 color: white;
             }
             &.nav-item-level1{
-                text-transform: uppercase;
                 background: lighten($gray, 25%);
                 color: white;
+            }
+
+            &.active, &.active:hover{
+                background: #e0e0e0;
             }
         }
         &:first-child, &:first-child > a{
@@ -224,16 +159,16 @@ aside .nav {
     .Grid-cell{
         .nav{
             li{
-
-                margin: 5px 0;
                 &:last-child{
                     margin: 0;
                 }
                 a{
-                    background: #fefefe;
                     text-align: left;
                     text-transform: none; 
-                    padding: 0 3px;  
+                    padding: 8px 3px; 
+                    &:hover{
+                        background: whitesmoke;
+                    }
                 }    
             }
 
@@ -249,6 +184,9 @@ aside .nav {
     }
 
 }
+
+
+
 
 /* === Search == */
 .inline-search{
