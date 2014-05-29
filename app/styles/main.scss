@@ -27,18 +27,19 @@ a, a:hover{
     }
 }
 .nav-active-item{
-    a{
-    
-        color: white; 
-        text-decoration: none;
-        background: $gray;
-    }
+    color: white; 
+    text-decoration: none;
+    background: $gray;
+    text-transform: uppercase;
 }
 
 /* === Header === */
 header.masthead{
     background: #ddd;
     padding: 5px 0;
+
+    .page-title{ clear: both; }
+    
     nav{
         & > ul{
             list-style: none;
@@ -71,27 +72,96 @@ header.masthead{
                     &:hover{
                         background: white;
                     }
-
                 }
             }
         } 
     }
-
-    .page-title{ clear: both; }
 }
-.nav {
-    ul{
-        display: block;
-    }
-    li{
-        a{  
-            position: relative;
-        }
-        &.nav-item-level5{
-            @extend .nav-active-item;
-            a{
-                text-transform: uppercase;
+// .nav {
+//     ul{ display: block; }
+//     li{
+//         a{  position: relative; }
+//         &.nav-item-level5{
+//             @extend .nav-active-item;
+//             a{
+//                 text-transform: uppercase;
                 
+//                 &:before{
+//                     @extend .fa;
+//                     content: '\f100\f104';
+//                     position: absolute;
+//                     letter-spacing: -.15rem;
+//                     margin-left: -15px;
+//                     margin-top: 2px;
+//                 }
+//             }
+//         }
+//         &.nav-item-level4{
+//             @extend .nav-active-item;
+//             a{
+//                 text-transform: uppercase;
+                
+//                 &:before{
+//                     @extend .fa;
+//                     content: '\f100';
+//                     position: absolute;
+//                     margin-left: -12px;
+//                     margin-top: 2px;
+//                 }
+//             }
+//         }
+//         &.nav-item-level3{
+//             @extend .nav-active-item; 
+//             a{
+//                 text-transform: uppercase;
+
+//                 &:before{
+//                     @extend .fa;
+//                     content: '\f104';
+//                     position: absolute;
+//                     margin-left: -10px;
+//                     margin-top: 2px;
+//                 }
+//             }
+//         }
+//         &.nav-item-level2{
+//             @extend .nav-active-item;
+//             a{
+//                 text-transform: uppercase;
+//                 color: white;
+//             }
+//         }
+//         &.nav-item-level1{
+//             background: lighten($gray, 25%);
+//             a{
+//                 text-transform: uppercase;
+//                 background: transparent;
+//                 color: white;
+//             }
+//         }
+//         &:first-child, &:first-child > a{
+//             border-radius: 5px 5px 0 0;
+//         }
+//         &:last-child, &:last-child > a{
+//             border-radius: 0 0 5px 5px;
+//         }
+//     }
+// }
+
+
+aside .nav {
+    ul{ display: block; }
+    li{
+
+        & > a{ 
+            position: relative; 
+            text-transform: none;
+            
+            &.nav-item-level5{
+                text-transform: uppercase;
+                @extend .nav-active-item;
+                
+                    
                 &:before{
                     @extend .fa;
                     content: '\f100\f104';
@@ -100,13 +170,12 @@ header.masthead{
                     margin-left: -15px;
                     margin-top: 2px;
                 }
+            
             }
-        }
-        &.nav-item-level4{
-            @extend .nav-active-item;
-            a{
+            &.nav-item-level4{
                 text-transform: uppercase;
-                
+                @extend .nav-active-item;
+                    
                 &:before{
                     @extend .fa;
                     content: '\f100';
@@ -114,12 +183,11 @@ header.masthead{
                     margin-left: -12px;
                     margin-top: 2px;
                 }
+            
             }
-        }
-        &.nav-item-level3{
-            @extend .nav-active-item; 
-            a{
+            &.nav-item-level3{
                 text-transform: uppercase;
+                @extend .nav-active-item; 
 
                 &:before{
                     @extend .fa;
@@ -129,19 +197,14 @@ header.masthead{
                     margin-top: 2px;
                 }
             }
-        }
-        &.nav-item-level2{
-            @extend .nav-active-item;
-            a{
+            &.nav-item-level2{
                 text-transform: uppercase;
+                @extend .nav-active-item;
                 color: white;
             }
-        }
-        &.nav-item-level1{
-            background: lighten($gray, 25%);
-            a{
+            &.nav-item-level1{
                 text-transform: uppercase;
-                background: transparent;
+                background: lighten($gray, 25%);
                 color: white;
             }
         }
@@ -153,6 +216,8 @@ header.masthead{
         }
     }
 }
+
+
 
 /* === Dropdown == */
 .dropdown-menu{
@@ -185,31 +250,7 @@ header.masthead{
 
 }
 
-/* === Dropdown === */
-.dd { 
-    position: absolute;
-    left: 0; right: 0;
-    background: rgba(#eee,.95);
-    @include opacity(0);
-    height: 0;
-    z-index: 10;
-    // display: none;
-    opacity: 0;
-    overflow: hidden;
-    transition: all .25s linear 0s;
-    &[data-active="true"]{
-        z-index: 10;
-        display: block;
-        height: auto;
-        opacity: 1;
-    }
-    li{
-        &:hover, &.active{
-            background: white;
-        }
-    }
-}
-
+/* === Search == */
 .inline-search{
     display: inline-block;
     position: relative;
