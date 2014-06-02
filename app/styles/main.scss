@@ -13,11 +13,51 @@ $icon-font-path: "../bower_components/bootstrap-sass-official/vendor/assets/font
 
 /* === Helpers === */
 *             { transition: all .15s ease-in-out; }
+body          { font-weight: 400; font-family: "PT Sans";}
+img           { width: 100%; max-width: auto; height: auto; }
 .upcase       { text-transform: uppercase; }
 .inline-block { display:inline-block; }
 .fa           { display: inline-block; font-family: FontAwesome; font-style: normal; font-weight: normal;line-height: 1;-webkit-font-smoothing: antialiased;-moz-osx-font-smoothing: grayscale; }
-body          { font-weight: 400; font-family: "PT Sans";}
+.nav-active-item
+              { color: white;text-decoration: none;background: $gray;text-transform: uppercase;letter-spacing: 1px;text-shadow: none; }
 
+.ellipsis {
+    aside &{
+        &:after{
+            @extend .fa;
+            content: "\f141";
+            float: right;
+            font-size: 150%;
+            color: rgba(0,0,0,0.15);
+            text-shadow: 0px 1px #fff;
+        }    
+    }
+}
+.arrow-up{
+    $size: 5px;
+    &:after, &:before{
+        bottom: 100%;
+        left: 25px; //50%;
+        border: solid transparent;
+        content: " ";
+        height: 0;
+        width: 0;
+        position: absolute;
+        pointer-events: none;
+    }
+    &:after{
+        border-color: rgba(85, 85, 85, 0);
+        border-bottom-color: #555555;
+        border-width: $size;
+        margin-left: -$size;
+    }
+    &:before{
+        border-color: rgba(255, 255, 255, 0);
+        border-bottom-color: #ffffff;
+        border-width: $size+1;
+        margin-left: -($size+1);
+    }
+}
 
 
 /* === Variables === */
@@ -56,10 +96,7 @@ header.masthead{
                 &:first-child{
                     margin-left: 0;
                 }
-                &.active a, &.active:hover a{
-                    background: $gray;
-                    color: #ccc;
-                }
+                
                 a{
                     display: block;
                     padding: 5px 0;
@@ -72,6 +109,9 @@ header.masthead{
                     &:hover{
                         background: white;
                     }
+                    &.active, &.active:hover{
+                        @extend .nav-active-item;
+                    }
                 }
             }
         } 
@@ -82,18 +122,10 @@ header.masthead{
 
 
 /* === Aside nav === */
-.nav-active-item{
-    color: white; 
-    text-decoration: none;
-    background: $gray;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    text-shadow: none;
-}
+
 aside .nav {
     ul{ display: block; }
     li{
-
         & > a{ 
             position: relative; 
             text-transform: none;
@@ -103,40 +135,16 @@ aside .nav {
                 @extend .nav-active-item;
 
             }
-            &.nav-item-level5{
-                &:before{
-                    @extend .fa;
-                    content: '\f100\f104';
-                    position: absolute;
-                    letter-spacing: -.15rem;
-                    margin-left: -15px;
-                    margin-top: 2px;
-                }
-            }
-            &.nav-item-level4{                    
-                &:before{
-                    @extend .fa;
-                    content: '\f100';
-                    position: absolute;
-                    margin-left: -12px;
-                    margin-top: 2px;
-                }
-            }
-            &.nav-item-level3{
-                &:before{
-                    @extend .fa;
-                    content: '\f104';
-                    position: absolute;
-                    margin-left: -10px;
-                    margin-top: 2px;
-                }
-            }
-            &.nav-item-level2{
+
+            &.nav-item-parent{
+                @extend .arrow-up;
+                background: $gray;
                 color: white;
-            }
-            &.nav-item-level1{
-                background: lighten($gray, 25%);
-                color: white;
+                &:first-child{
+                    &:before, &:after{
+                        display: none;
+                    }
+                }
             }
 
             &.active, &.active:hover{
@@ -171,9 +179,7 @@ aside .nav {
                     }
                 }    
             }
-
         }
-        
     }
 }
 .breadcrumb{
@@ -206,14 +212,28 @@ aside .nav {
         border-radius: 0 $border-radius-base $border-radius-base 0;
     }
 }
+/* === Hero === */
+
+.hero{
+    img{
+        max-height: 400px;    
+    }
+}
+
 
 /* === Content === */
 .container-fluid,.container{
     max-width: $container-large-desktop;
+    margin-left: auto;
+    margin-right: auto;
 }
 .main-body{
     margin: 20px 0;
 }
+.landing-copy{
+    margin-top: 20px;
+}
+
 aside{
 
     .nav{
@@ -239,4 +259,5 @@ article{
         padding: 0 20px 10px;
     }
 }
+
 
