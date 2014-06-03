@@ -28,6 +28,7 @@
     "gulp-useref": "^0.4.2",
     "jshint-stylish": "^0.2.0",
     "opn": "^0.1.1",
+    "path": "^0.4.9",
     "wiredep": "^1.4.3",
     "gulp-watch": "^0.6.4",
     "gulp-plumber": "^0.6.1",

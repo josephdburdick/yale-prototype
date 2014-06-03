@@ -2,12 +2,12 @@ $icon-font-path: "../bower_components/bootstrap-sass-official/vendor/assets/font
 
 /* === Imports === */
 @import "../bower_components/bootstrap-sass-official/vendor/assets/stylesheets/bootstrap.scss";
-@import "//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css";
-@import url(http://fonts.googleapis.com/css?family=PT+Sans);
+@import "../bower_components/font-awesome/scss/font-awesome.scss";
+// @import url(http://fonts.googleapis.com/css?family=PT+Sans);
 
 /* === Grid === */
 @import 'breakpoints';
-@import 'grid';
+@import 'grid'; 
 
 /* === Helpers === */
 *             { transition: all .15s ease-in-out; }
@@ -35,7 +35,7 @@ img           { width: 100%; max-width: auto; height: auto; }
     $size: 5px;
     &:after, &:before{
         bottom: 100%;
-        left: 25px; //50%;
+        left: 25px;
         border: solid transparent;
         content: " ";
         height: 0;
@@ -210,6 +210,9 @@ aside .nav {
 
 .hero{
     img{
+        width: 100%;
+        max-width: auto;
+        height: auto;
         max-height: 400px;    
     }
 }
