@@ -1,16 +1,24 @@
 'use strict';
 // generated on 2014-05-20 using generator-gulp-webapp 0.1.0
 
-var gulp = require('gulp'),
-    watch = require('gulp-watch'),
-    plumber = require('gulp-plumber'),
-    gutil = require('gulp-util'),
-    $ = require('gulp-load-plugins')();
+var gulp        = require('gulp'),
+    gutil       = require('gulp-util'),
+    fileinclude = require('gulp-file-include'),
+    $           = require('gulp-load-plugins')();
 
+
+gulp.task('fileinclude', function() {
+  gulp.src(['app/index.html'])
+    .pipe(f ileinclude({
+      prefix: '@@',
+      basepath: '@file'
+    }))
+    .pipe(gulp.dest('./'));
+});
 
 gulp.task('styles', function () {
     return gulp.src('app/styles/main.scss')
-        .pipe(plumber(function(error) {
+        .pipe($.plumber(function(error) {
           gutil.beep();
           gutil.log(gutil.colors.red(error.message));
           this.emit('end');
@@ -27,7 +35,7 @@ gulp.task('styles', function () {
 
 gulp.task('scripts', function () {
     return gulp.src('app/scripts/**/*.js')
-        .pipe(plumber(function(error) {
+        .pipe($.plumber(function(error) {
           gutil.beep();
           gutil.log(gutil.colors.red(error.message));
           this.emit('end');
@@ -42,10 +50,14 @@ gulp.task('html', ['styles', 'scripts'], function () {
     var cssFilter = $.filter('**/*.css');
 
     return gulp.src('app/*.html')
-        .pipe(plumber(function(error) {
+        .pipe($.plumber(function(error) {
           gutil.beep();
           gutil.log(gutil.colors.red(error.message));
           this.emit('end');
+        }))
+        .pipe(fileinclude({
+          prefix: '@@',
+          basepath: '@file'
         }))
         .pipe($.useref.assets({searchPath: '{.tmp,app}'}))
         .pipe(jsFilter)
@@ -75,6 +87,7 @@ gulp.task('fonts', function () {
     return $.bowerFiles()
         .pipe($.filter('**/*.{eot,svg,ttf,woff}'))
         .pipe($.flatten())
+        .pipe(gulp.dest('.tmp/fonts'))
         .pipe(gulp.dest('dist/fonts'))
         .pipe($.size());
 });
