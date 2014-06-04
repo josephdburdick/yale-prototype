@@ -210,10 +210,10 @@ aside .nav {
 
 .hero{
     img{
-        width: 100%;
-        max-width: auto;
-        height: auto;
-        max-height: 400px;    
+        width: 100% !important;
+        max-width: auto !important;
+        height: auto !important;
+        max-height: 400px !important;    
     }
 }
 
