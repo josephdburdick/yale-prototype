@@ -1,0 +1,74 @@
+.accordion {
+    $light-bg: #f0f0f0;
+    a{
+        padding: 10px 10px 8px;
+        margin-bottom: 1px;
+    }
+    .accordion-group{
+        background-color: #e0e0e0;
+        &:first-child, &:first-child > .accordion-heading a{
+            @extend .nav-active-item;
+            border-radius: 5px 5px 0 0;
+        }
+        &:last-child{
+            border-radius: 0 0 5px 5px;
+        }
+
+        .accordion-heading {
+        
+            list-style-type:none;
+            position: relative;
+            & ~ .collapse.in{
+                background-color: red!important;
+            }
+            a{  
+                position: relative;
+                text-decoration:none;
+                display:block;
+
+                &.accordion-toggle{
+                    position: absolute;
+                    right:0;
+                    top: 0;
+                    display: inline-block;
+                    float:right;
+                    border-left: 1px solid white;
+                    padding-left: 15px;
+                    padding-right: 15px;
+                    color: $gray;
+                    text-shadow: 0 0 1px white;
+                    transition: all .25 ease-in-out .5;
+                    .fa{
+                        position:relative;
+                        transform: rotate(0deg);
+                    }
+                    &:hover{
+                        
+                    }
+                    &.active{
+                        background-color: $gray;
+                        text-shadow: 0 0px 1px black;
+                        i.fa{
+                            color: white;
+                            transform: rotate(45deg);    
+                        }
+                        
+                    }
+                }
+            }
+        }
+    } 
+    .accordion-inner{
+        background-color: $light-bg;
+        border-top: 1px solid white;
+        // background-image: linear-gradient(darken(#e0e0e0, 15%) 0%, $light-bg 3%);
+        & > a{
+            display:block;
+            border-bottom: 1px solid darken($light-bg,4%);
+            &:hover{
+                background-color: darken($light-bg,3%);
+            }
+        }
+    }
+}
+
